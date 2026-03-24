@@ -9,11 +9,13 @@ df = pd.read_csv("data/data.csv")
 X = df[["feature1", "feature2"]]
 y = df["label"]
 
-X_train, X_test, y_train, y_test = train_test_split(X, y)
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42)
+
+y_train = y_train.sample(frac=1, random_state=42)
 
 with mlflow.start_run() as run:
 
-    model = RandomForestClassifier()
+    model = RandomForestClassifier(random_state=42)
     model.fit(X_train, y_train)
 
     preds = model.predict(X_test)
