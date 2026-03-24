@@ -1,0 +1,2 @@
+dvc-storage/** -text
+data/data.csv -text
