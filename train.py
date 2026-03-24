@@ -11,6 +11,7 @@ y = df["label"]
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42)
 
+y_train = y_train.sample(frac=1, random_state=42)
 
 with mlflow.start_run() as run:
 
