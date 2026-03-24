@@ -28,7 +28,7 @@ jobs:
 
       - name: Train Model
         env:
-          MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
+          MLFLOW_TRACKING_URI: file:./mlruns
         run: python train.py
 
       - name: Upload model_info.txt
@@ -87,7 +87,7 @@ jobs:
 
       - name: Check Threshold
         env:
-          MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
+          MLFLOW_TRACKING_URI: file:./mlruns
         run: python check_threshold.py
 
       - name: Mock Docker Build
